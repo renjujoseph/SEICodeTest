@@ -62,10 +62,14 @@ public static void main(String[] args) {
  //This is an extended approach of using Set. Here filtering of duplicates and creation of new input array
  //is completed in one single for loop.
  //Positives:
- // 
- //However, with this since i dont use iterator to loop, i cant use this to delete certain elements.
- //Other Negatives: You have an extra step to copy the array elements to exclude the
- //positions which were taken by duplicate elements   
+ //Hash Set removes duplicates enrty
+ //Filtering of duplicates and and populating new input array is taken care in 1 single for loop.
+ //Negatives:
+ //However, with this since we dont use an iterator to loop, this approach doesnt suite if we need to delete som elements in between
+ //the processing.
+ //You have an extra step to copy the array elements to exclude the
+ //positions which were taken by duplicate elements 
+ //We should use option 1 if delete operations happen to the array during our processing.
  private static int[] removeDuplicatesWithHashSet(int[] inputArray) {
   final Set < Integer > set = new HashSet < > ();
   final int[] tmp = new int[inputArray.length];
@@ -74,11 +78,11 @@ public static void main(String[] args) {
    //set.add returns boolean which we can use to see whether the element is already added or not. 
    if (set.add(i))
     tmp[index++] = i;
-  //finally, i copy the array so that the removed duplicate elements are not taken into account.
+  //finally, copy the array so that the removed duplicate elements are not taken into account.
   return Arrays.copyOfRange(tmp, 0, index);
  }
    
-    
+//This method takes care of logging the values present in the final filtered output integer array    
    private static void logArrayContents(int[] filteredIntArray){
        for(int cnt=0; cnt<filteredIntArray.length;cnt++){
            System.out.println(filteredIntArray[cnt]);
